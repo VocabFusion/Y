@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>VocabFusion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+  <div class="container mx-auto p-4">
+    <!-- Navigation Tabs -->
+    <div class="flex justify-center mb-6 flex-wrap">
+      <button class="tab-btn bg-blue-600 text-white px-4 py-2 m-1 rounded" onclick="showPage('welcome')">Welcome</button>
+      <button class="tab-btn bg-blue-600 text-white px-4 py-2 m-1 rounded" onclick="showPage('reviewer')">Reviewer</button>
+      <button class="tab-btn bg-blue-600 text-white px-4 py-2 m-1 rounded" onclick="showPage('flashcards')">Flashcards</button>
+      <button class="tab-btn bg-blue-600 text-white px-4 py-2 m-1 rounded" onclick="showPage('quiz')">Quiz</button>
+      <button class="tab-btn bg-blue-600 text-white px-4 py-2 m-1 rounded" onclick="showPage('match')">Match the Synonym</button>
+    </div>
+
+    <!-- Page 1: Welcome -->
+    <div id="welcome" class="tab-page">
+      <h1 class="text-3xl font-bold mb-4 text-center">WELCOME TO VOCABFUSION!</h1>
+      <p class="text-lg text-center mb-4">This is a platform designed to help you expand your vocabulary in an engaging and interactive way.</p>
+      <p class="mb-4 text-center">The purpose of VocabFusion is to help learners enhance their vocabulary skills by integrating engaging activities, interactive content, and real-life applications to make language learning fun, meaningful, and effective.</p>
+      <p class="font-semibold mb-2">What is inside VocabFusion:</p>
+      <ul class="list-disc list-inside mb-4">
+        <li>Reviewer</li>
+        <li>Activities:
+          <ul class="list-disc list-inside ml-4">
+            <li>Flashcards</li>
+            <li>Quiz</li>
+            <li>Match</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Page 2: Reviewer -->
+    <div id="reviewer" class="tab-page hidden">
+      <h2 class="text-2xl font-bold mb-4">Study these 25 Vocabulary Words</h2>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
+        <li><strong>Abstain</strong> – to deliberately avoid or refrain from something</li>
+        <li><strong>Alleviate</strong> – to reduce pain or make something less severe</li>
+        <li><strong>Aloof</strong> – emotionally distant or uninvolved</li>
+        <li><strong>Ambiguous</strong> – having more than one meaning; unclear</li>
+        <li><strong>Belligerent</strong> – hostile and aggressive</li>
+        <li><strong>Candid</strong> – honest and straightforward</li>
+        <li><strong>Concur</strong> – to agree with someone or something</li>
+        <li><strong>Convoluted</strong> – extremely complex and difficult to follow</li>
+        <li><strong>Credible</strong> – believable or trustworthy</li>
+        <li><strong>Cynical</strong> – distrustful of others’ motives or sincerity</li>
+        <li><strong>Demeanor</strong> – outward behavior or conduct</li>
+        <li><strong>Diligent</strong> – showing care and effort in work or duties</li>
+        <li><strong>Eloquent</strong> – fluent or persuasive in speaking or writing</li>
+        <li><strong>Empathy</strong> – the ability to understand and share the feelings of others</li>
+        <li><strong>Feasible</strong> – possible and practical to do easily or conveniently</li>
+        <li><strong>Formidable</strong> – inspiring fear or respect through being large or powerful</li>
+        <li><strong>Frivolous</strong> – not having any serious purpose or value</li>
+        <li><strong>Imminent</strong> – about to happen very soon</li>
+        <li><strong>Indignant</strong> – feeling or showing anger at unfair treatment</li>
+        <li><strong>Mundane</strong> – lacking excitement; dull or ordinary</li>
+        <li><strong>Obsolete</strong> – outdated or no longer used</li>
+        <li><strong>Omniscient</strong> – knowing everything</li>
+        <li><strong>Paradox</strong> – a situation that seems contradictory but may be true</li>
+        <li><strong>Persevere</strong> – to keep going despite difficulty</li>
+        <li><strong>Reiterate</strong> – to say or do something again for emphasis</li>
+      </ul>
+    </div>
+
+    <!-- Page 3: Flashcards -->
+    <div id="flashcards" class="tab-page hidden">
+      <h2 class="text-2xl font-bold mb-4">CONSTRUCT ME!</h2>
+      <div id="flashcard-container" class="space-y-4"></div>
+      <button onclick="checkFlashcards()" class="bg-green-500 text-white px-4 py-2 rounded mt-4">Check Answers</button>
+      <div id="flashcard-score" class="mt-4 font-bold"></div>
+    </div>
+
+    <!-- Page 4: Quiz -->
+    <div id="quiz" class="tab-page hidden">
+      <h2 class="text-2xl font-bold mb-4">COMPLETE ME!</h2>
+      <div id="quiz-container" class="space-y-6"></div>
+      <button onclick="checkQuizScore()" class="bg-green-600 text-white px-4 py-2 rounded mt-4">Check Score</button>
+      <div id="quiz-score" class="mt-4 font-bold"></div>
+    </div>
+
+    <!-- Page 5: Match the Synonym -->
+    <div id="match" class="tab-page hidden">
+      <h2 class="text-2xl font-bold mb-4">MATCH THE SYNONYM</h2>
+      <p class="mb-4">Write the <strong>LETTER</strong> of the correct answer from Column B in the space before the word in Column A.</p>
+
+    <!-- Column B Display -->
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-6">
+        <div><strong>A.</strong> Easy</div>
+        <div><strong>B.</strong> Talkative</div>
+        <div><strong>C.</strong> Old-fashioned</div>
+        <div><strong>D.</strong> Serious</div>
+        <div><strong>E.</strong> Stop</div>
+        <div><strong>F.</strong> Polite</div>
+        <div><strong>G.</strong> Honest</div>
+        <div><strong>H.</strong> Unclear</div>
+        <div><strong>I.</strong> Trustworthy</div>
+        <div><strong>J.</strong> Agree</div>
+        <div><strong>K.</strong> Stand-offish</div>
+        <div><strong>L.</strong> Feelings</div>
+        <div><strong>M.</strong> Hardworking</div>
+        <div><strong>N.</strong> Calm down</div>
+       <div><strong>O.</strong> Aggressive</div>
+    </div>
+
+    <!-- Column A with inputs -->
+    <div id="match-container" class="space-y-2 mb-4"></div>
+      <button onclick="checkMatchAnswers()" class="bg-green-700 text-white px-4 py-2 rounded">Check Answers</button>
+      <div id="match-score" class="mt-4 font-bold"></div>
+    </div>
+
+
+  <script>
+    // Navigation logic
+    function showPage(id) {
+      document.querySelectorAll('.tab-page').forEach(p => p.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    // Flashcards
+    const flashcardWords = [
+      ["Diligent", "Hardworking"], ["Eloquent", "Fluent or persuasive"], ["Empathy", "Understand others"], ["Feasible", "Possible"],
+      ["Formidable", "Inspiring fear"], ["Frivolous", "Not serious"], ["Imminent", "About to happen"], ["Alleviate", "Reduce pain"],
+      ["Aloof", "Emotionally distant"], ["Ambiguous", "Unclear"], ["Belligerent", "Aggressive"], ["Candid", "Honest"],
+      ["Concur", "Agree"], ["Convoluted", "Complicated"], ["Cynical", "Distrustful"]
+    ];
+
+    const flashcardContainer = document.getElementById('flashcard-container');
+    flashcardWords.forEach(([word], index) => {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <label class="block font-semibold">${index + 1}. ${word}</label>
+        <input type="text" class="w-full p-2 border rounded flash-input" data-answer="${flashcardWords[index][1].toLowerCase()}">
+      `;
+      flashcardContainer.appendChild(div);
+    });
+
+    function checkFlashcards() {
+      let correct = 0;
+      document.querySelectorAll('.flash-input').forEach(input => {
+        const userAnswer = input.value.trim().toLowerCase();
+        const correctAnswer = input.dataset.answer;
+        if (userAnswer.includes(correctAnswer)) {
+          input.classList.add('bg-green-100');
+          input.classList.remove('bg-red-100');
+          correct++;
+        } else {
+          input.classList.add('bg-red-100');
+          input.classList.remove('bg-green-100');
+        }
+      });
+      document.getElementById('flashcard-score').textContent = `Your score: ${correct}/15`;
+    }
+
+    // Quiz
+    const quizData = [
+      { q: "She chose to ____ from voting.", a: 1, options: ["Concur", "Abstain", "Persevere"] },
+      { q: "The medicine will ____ your pain.", a: 0, options: ["Alleviate", "Candid", "Eloquent"] },
+      { q: "He stayed ____ during the meeting.", a: 2, options: ["Feasible", "Diligent", "Aloof"] },
+      { q: "Her answer was so ____ it confused us.", a: 1, options: ["Candid", "Ambiguous", "Demeanor"] },
+      { q: "The cat became ____ when startled.", a: 2, options: ["Diligent", "Credible", "Belligerent"] },
+      { q: "She gave a ____ answer that helped us.", a: 0, options: ["Candid", "Aloof", "Convoluted"] },
+      { q: "The speech was very ____.", a: 2, options: ["Ambiguous", "Feasible", "Eloquent"] },
+      { q: "They ____ on the final decision.", a: 0, options: ["Concur", "Aloof", "Abstain"] },
+      { q: "That explanation was too ____.", a: 2, options: ["Mundane", "Empathy", "Convoluted"] },
+      { q: "She is very ____ and focused.", a: 1, options: ["Frivolous", "Diligent", "Ambiguous"] },
+      { q: "Your plan is not ____.", a: 1, options: ["Cynical", "Feasible", "Frivolous"] },
+      { q: "The feeling of ____ matters most.", a: 2, options: ["Ambiguous", "Demeanor", "Empathy"] },
+      { q: "That site looks so ____, it’s outdated.", a: 1, options: ["Formidable", "Obsolete", "Credible"] },
+      { q: "The storm is ____, take cover!", a: 0, options: ["Imminent", "Cynical", "Aloof"] },
+      { q: "He continued to ____ despite failure.", a: 2, options: ["Abstain", "Concur", "Persevere"] }
+    ];
+
+    const quizContainer = document.getElementById('quiz-container');
+    quizData.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.classList.add('p-4', 'bg-white', 'rounded', 'shadow');
+      const question = document.createElement('p');
+      question.textContent = `${idx + 1}. ${item.q}`;
+      div.appendChild(question);
+      item.options.forEach((opt, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.className = 'block w-full text-left border px-4 py-2 rounded my-1 hover:bg-gray-100';
+        btn.onclick = () => {
+          const buttons = div.querySelectorAll('button');
+          buttons.forEach((b, j) => {
+            b.classList.remove('bg-green-200', 'bg-red-200');
+            if (j === item.a) b.classList.add('bg-green-200');
+            else if (j === i) b.classList.add('bg-red-200');
+          });
+        };
+        div.appendChild(btn);
+      });
+      quizContainer.appendChild(div);
+    });
+
+    function checkQuizScore() {
+      let score = document.querySelectorAll('.bg-green-200').length;
+      document.getElementById('quiz-score').textContent = `Your score: ${score}/15`;
+    }
+
+    // Match the Synonym
+    const matchData = [
+      ["Abstain", "E"], ["Alleviate", "N"], ["Aloof", "K"], ["Ambiguous", "H"], ["Belligerent", "O"],
+      ["Candid", "G"], ["Concur", "J"], ["Credible", "I"], ["Diligent", "M"], ["Eloquent", "B"],
+      ["Empathy", "L"], ["Feasible", "A"], ["Frivolous", "D"], ["Mundane", "F"], ["Obsolete", "C"]
+    ];
+
+    const columnB = {
+      A: "Easy", B: "Talkative", C: "Old-fashioned", D: "Serious", E: "Stop", F: "Polite",
+      G: "Honest", H: "Unclear", I: "Trustworthy", J: "Agree", K: "Stand-offish", L: "Feelings",
+      M: "Hardworking", N: "Calm down", O: "Aggressive"
+    };
+
+    const matchContainer = document.getElementById('match-container');
+    matchData.forEach(([word, correct], index) => {
+      const div = document.createElement('div');
+      div.innerHTML = `
+        <label class="block font-semibold">${index + 1}. 
+          <input type="text" data-answer="${correct}" class="inline-block border p-1 w-12 text-center match-input mx-2">
+          ${word}
+        </label>`;
+      matchContainer.appendChild(div);
+    });
+
+    function checkMatchAnswers() {
+      let correct = 0;
+      document.querySelectorAll('.match-input').forEach(input => {
+        const val = input.value.trim().toUpperCase();
+        if (val === input.dataset.answer) {
+          input.classList.add('bg-green-100');
+          input.classList.remove('bg-red-100');
+          correct++;
+        } else {
+          input.classList.add('bg-red-100');
+          input.classList.remove('bg-green-100');
+        }
+      });
+      document.getElementById('match-score').textContent = `Your score: ${correct}/15`;
+    }
+  </script>
+</body>
+</html>
